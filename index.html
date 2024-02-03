@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Notas al azar</title>
+    </head>
+    <body>
+        <h3>Nota:</h3>
+        <h2 id="note"></h2>
+        <br>
+        <h3>En latin es:</h3>
+        <h2 id="res"></h2>
+        <br>
+        <button onclick="generateNote()">
+            Generar nueva nota
+        </button>
+        <button onclick="reveal()">
+           Revelar
+        </button>
+        <br>
+        <script>
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            var notes = ["C", "D", "E", "F", "G", "A", "B",
+            "C#", "D#", "F#", "G#", "A#",
+            "Cb", "Db", "Fb", "Gb", "Ab"]
+
+            var names = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si",
+            "Do Sostenido", "Re Sostenido", "Fa Sostenido", "Sol Sostenido", "La Sostenido",
+            "Do Bemol", "Re Bemol", "Fa Bemol", "Sol Bemol", "La Bemol"]
+
+            function generateNote()  {
+                var note = getRandomInt(0, notes.length)
+                var noteNode = document.getElementById("note")
+                var resNode = document.getElementById("res")
+
+                noteNode.textContent = notes[note]
+                resNode.textContent = names[note]
+                resNode.style.display = "none"
+            }
+
+            function reveal() {
+                var resNode = document.getElementById("res")
+                resNode.style.display = "inline-block"
+            }
+
+        </script>
+    </body>
+
 </html>
